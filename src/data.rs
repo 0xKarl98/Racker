@@ -2,19 +2,19 @@ use url::Url;
 use serde::Deserialize;
 use failure::Fallible;
 use reqwest::blocking::Client;
-
+use std::collections::HashMap;
 //Deserialize trait tells rust to use serde to parse the json data
 //Add support more data types later 
 //we note those vars as pub , as they are used in util.rs
 #[derive(Deserialize, Debug)]
 pub struct MarketData {
-    pub current_price: f64,
-    all_time_high: f64,
-    market_cap: f64 , 
-    market_cap_rank: u32,
-    high_24h :f64 ,
-    low_24h : f64,
-    pub price_change_24h :f64, 
+    pub current_price: HashMap<String, f64>,
+    all_time_high: HashMap<String, f64>,
+    market_cap: HashMap<String, f64> , 
+    market_cap_rank:usize ,
+    high_24h :HashMap<String, f64> ,
+    low_24h : HashMap<String, f64>,
+    pub price_change_24h : HashMap<String, f64>, 
     
 }
 

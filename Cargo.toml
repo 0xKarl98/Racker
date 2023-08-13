@@ -8,7 +8,7 @@ edition = "2021"
 [dependencies]
 failure = "0.1.8"
 prettytable = "0.10.0"
-reqwest = { version = "0.11.18", features = ["blocking"] }
+reqwest = { version = "0.11.18", features = ["blocking", "json"] }
 serde  = { version = "1.0.183", features = ["derive"] }
 tabular = "0.2.0"
 url = "2.4.0"
