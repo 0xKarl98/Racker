@@ -2,6 +2,25 @@ use crate::data::CoinData ;
 //use tabular::row ;
 //use prettytable to print out table 
 use prettytable::{Cell, Row, Table};
+use url::{Url, ParseError};
+
+
+
+// Input : an string slice of an url
+// Return : an Url or just an error 
+pub fn parse_url(url: &str) -> Result<Url , ParseError> {
+    match Url::parse(url){
+        Ok(url) => Ok(url),
+        //Handling Relative URL Error 
+        Err(e) if e == ParseError::RelativeUrlWithoutBase 
+        => { 
+            let url_with_base = format!("{}{}", "http://", url);
+            Url::parse(url_with_base.as_str())
+        }
+        Err(e) => Err(e),
+    }
+}
+
 
 
 pub fn pretty_print(data: Vec<CoinData>) -> Result<() , ()> {
